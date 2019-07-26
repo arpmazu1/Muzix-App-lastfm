@@ -3,8 +3,10 @@ package com.stackroute.muzixapp.service;
 import com.stackroute.muzixapp.domain.Track;
 import com.stackroute.muzixapp.exceptions.TrackAlreadyExistsException;
 import com.stackroute.muzixapp.exceptions.TrackNotFoundException;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 // trackservice interface
 public interface TrackService {
@@ -19,5 +21,6 @@ public interface TrackService {
 
     Track getTrackByName(String name) throws TrackNotFoundException;
 
+    void getTopTracks();
 
 }

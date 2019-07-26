@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class TrackController {
     //getall track method
     @GetMapping("track")
     public ResponseEntity<?> getAllTracks() {
+
         return new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     }
 
@@ -66,6 +68,15 @@ public class TrackController {
     @GetMapping("track/{name}")
     public ResponseEntity<?> getTrackBYName(@PathVariable String name) throws TrackNotFoundException {
         return new ResponseEntity<>(trackService.getTrackByName(name), HttpStatus.OK);
+
+    }
+    //gettoptrack method for fetching data from api
+    @GetMapping("toptrack")
+    public ResponseEntity<?> getTopTracks(){
+
+        trackService.getTopTracks();
+        return new ResponseEntity<String>("Fetched",HttpStatus.OK);
+
 
     }
 }

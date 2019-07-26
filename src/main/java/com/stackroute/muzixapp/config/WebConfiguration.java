@@ -30,6 +30,7 @@ public class WebConfiguration {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
+
     //inorder to run the swagger2 to go to this link http://localhost:8080/swagger-ui.html
     //bean for swagger 2 docket product api
     @Bean
@@ -41,6 +42,7 @@ public class WebConfiguration {
                 .build().apiInfo(apiEndPointsInfo());
 
     }
+
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Spring Boot REST API")
                 .description("Track Management REST API")
@@ -51,6 +53,7 @@ public class WebConfiguration {
                 .build();
     }
 
+    //using eventlistner for ApplicationListener
     @EventListener
     public void handleContextRefreshEvent(ContextRefreshedEvent ctxStartEvt) {
         System.out.println("Context Start Event received.");
